@@ -1,0 +1,4 @@
+version "4.0"
+
+#include "zscript/maliciousweapons/items/ammo.zs"
+#include "zscript/maliciousweapons/items/weapons.zs"
