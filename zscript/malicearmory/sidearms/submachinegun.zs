@@ -1,0 +1,33 @@
+
+Class MaliceMP5 : SinWeapon replaces SinSMG{
+	Default{
+		Inventory.Icon "MP5ZA0";
+		Tag "MP5";
+		Inventory.PickupMessage "Picked up an MP5.";
+		SinItem.Description "The Heckler & Koch MP5 is a compact, fully automatic submachine gun renowned for its accuracy, reliability, and controllable recoil. Widely used by military and law enforcement units worldwide, it chambers 9mm rounds and excels in close-quarters combat due to its lightweight design and rapid rate of fire.";
+		SinWeapon.AmmoType "9mm";
+		SinWeapon.AmmoLoaded "Malice9mmAmmo";
+		SinWeapon.DefaultMagazine "Malice9mmMagExtended";
+		SinWeapon.FireType FIRE_AUTO;
+		SinWeapon.ReloadType RELOAD_MAG;
+		SinWeapon.Spread -0.5,-0.5;
+		SinWeapon.ClimbMultiplier 0.5,0.5;
+		SinWeapon.CanChamber 1;
+		SinWeapon.FireMode1 1,4;
+		SinWeapon.FireMode2 3,1;
+		SinWeapon.FireMode3 999,4;
+		SinWeapon.CasingVelocity 0,-4,4;
+		SinWeapon.DrySound "PM/GunClick";
+		SinWeapon.MagOutSound "PM/SMGOut";
+		SinWeapon.MagInSound "PM/SMGIn";
+		SinWeapon.OpenSound "MaliciousArmory/Pistol/BoltOpen";
+		SinWeapon.CloseSound "MaliciousArmory/Pistol/BoltClose";
+	}
+	States{Spawn: MP5Z A -1; Stop;}
+	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("MaliciousArmory/Pistol/BoltOpen");}
+	Override void OnUnequip(SinPlayer user, SinHands gun){}
+	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_StartSound("PistolZombie/FireDistant",CHAN_7,CHANF_OVERLAP,volume:0.55);
+		shooter.A_StartSound("Pregnant/SMG",8,pitch:1.15);
+	}
+}

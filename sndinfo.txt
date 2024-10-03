@@ -1,0 +1,7 @@
+
+MaliciousArmory/Pistol/MagOut "sounds/PistolMagOut.ogg"
+MaliciousArmory/Pistol/MagIn "sounds/PistolMagIn.ogg"
+MaliciousArmory/Pistol/BoltOpen "sounds/PistolBoltOpen.ogg"
+MaliciousArmory/Pistol/BoltClose "sounds/PistolBoltClose.ogg"
+MaliciousArmory/Shotgun/BoltOpen "sounds/ShotgunBoltOpen.ogg"
+MaliciousArmory/Shotgun/BoltClose "sounds/ShotgunBoltClose.ogg"
