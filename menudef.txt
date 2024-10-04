@@ -1,0 +1,10 @@
+AddOptionMenu "SinOptions" after "SinOptionsScarcity"{
+	Submenu "Malicious Armory","MaliceArmoryOptions"
+}
+OptionMenu "MaliceArmoryOptions"{
+	Title "Malicious Armory"
+	StaticText ""
+	Option "Enabled?","ma_enable","OnOff"
+	StaticText "Should items/weapons/ammo be replaced with MA variants?"
+	StaticText "$SINOPT_DEFON",1
+}

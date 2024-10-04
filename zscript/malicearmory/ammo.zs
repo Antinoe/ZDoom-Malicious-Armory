@@ -7,7 +7,7 @@ Class MaliceRecipePistolAmmoPower : SinRecipe{
 	}
 }
 
-Class Malice9mmAmmo : SinAmmo replaces SinPistolAmmoNormal{
+Class Malice9mmAmmo : SinAmmo{
 	Default{
 		Inventory.Icon "PBULA0";
 		Tag "Handgun Ammo";
@@ -34,7 +34,7 @@ Class Malice9mmAmmo : SinAmmo replaces SinPistolAmmoNormal{
 		frame=fram;
 	}
 }
-Class Malice9mmAmmoPower : SinAmmo replaces SinPistolAmmoPower{
+Class Malice9mmAmmoPower : SinAmmo{
 	Default{
 		Inventory.Icon "PBUPA0";
 		Tag "$SINAMMO_PISTOLPOWER";
@@ -61,7 +61,7 @@ Class Malice9mmAmmoPower : SinAmmo replaces SinPistolAmmoPower{
 		frame=fram;
 	}
 }
-Class Malice9mmAmmoToxic : SinAmmo replaces SinPistolAmmoToxic{
+Class Malice9mmAmmoToxic : SinAmmo{
 	Default{
 		Inventory.Icon "PBUTA0";
 		Tag "$SINAMMO_PISTOLTOXIC";
@@ -88,20 +88,20 @@ Class Malice9mmAmmoToxic : SinAmmo replaces SinPistolAmmoToxic{
 		frame=fram;
 	}
 }
-Class Malice9mmBox : SinAmmoBox replaces SinPistolBox{
+Class Malice9mmBox : SinAmmoBox{
 	Default{
 		Inventory.Icon "AMMOB0";
 		Tag "Pistol Ammo Box";
 		Inventory.Amount 50;
 		Inventory.MaxAmount 150;
 		Inventory.PickupMessage "$SINAMMO_PISTOLBOXPKUP";
-		SinItem.Description "A small box designed to carry 50 Pistol Rounds of varying caliber.";
+		SinItem.Description "A small box designed to carry 150 9mm Rounds.";
 		SinAmmoBox.AmmoType "9mm";
 		SinAmmoBox.LoadedAmmo "Malice9mmAmmo";
 	}
 	States{Spawn: AMMO B -1; Stop;}
 }
-Class Malice9mmMag : SinAmmoBox replaces SinPistolClip{
+Class Malice9mmMag : SinAmmoBox{
 	Default{
 		Inventory.Icon "PCLPA0";
 		Tag "Pistol Magazine";
@@ -125,7 +125,7 @@ Class Malice9mmMag : SinAmmoBox replaces SinPistolClip{
 		icon=TexMan.CheckForTexture(ico,TexMan.Type_Any);
 	}
 }
-Class Malice9mmMagExtended : SinAmmoBox replaces SinSMGClip{
+Class Malice9mmMagExtended : SinAmmoBox{
 	Default{
 		Inventory.Icon "PCLPC0";
 		Tag "Extended Pistol Magazine";
@@ -149,7 +149,7 @@ Class Malice9mmMagExtended : SinAmmoBox replaces SinSMGClip{
 		icon=TexMan.CheckForTexture(ico,TexMan.Type_Any);
 	}
 }
-Class MaliceMagnumAmmo : SinAmmo replaces SinPistolAmmoNormal{
+Class MaliceMagnumAmmo : SinAmmo{
 	Default{
 		Inventory.Icon "PBULA0";
 		Tag "Handgun Ammo";
@@ -272,7 +272,7 @@ Class MaliceShellBox : SinAmmoBox replaces SinShellBox{
 		Inventory.Amount 20;
 		Inventory.MaxAmount 100;
 		Inventory.PickupMessage "Picked up a Shell Box.";
-		SinItem.Description "A box designed to carry 100 Shotgun Shells.";
+		SinItem.Description "A box designed to carry 100 12-Gauge Shells.";
 		SinAmmoBox.AmmoType "12Gauge";
 		SinAmmoBox.LoadedAmmo "MaliceShellBuckshot";
 	}
@@ -315,7 +315,7 @@ Class Malice556mmAmmo : SinAmmo replaces SinRifleAmmoNormal{
 		Inventory.Amount 15;
 		Inventory.MaxAmount 60;
 		Inventory.PickupMessage "Picked up Rifle Rounds.";
-		SinItem.Description "An assortment of mixed rifle calibers, notably 5.56mm and 7.62mm.";
+		SinItem.Description "A handful of 5.56mm Rounds.";
 		SinAmmo.AmmoType "5.56mm";
 		SinAmmo.TypeName "FMJ";
 		SinAmmo.AttackType ATTACK_PROJECTILE;
