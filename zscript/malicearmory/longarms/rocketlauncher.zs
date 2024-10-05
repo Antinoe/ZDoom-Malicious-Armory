@@ -1,5 +1,5 @@
 
-Class MaliceRPG7 : SinWeapon replaces SinRocketLauncher{
+Class MaliceRPG7 : SinWeapon{
 	Default{
 		Inventory.Icon "LAUNA0";
 		Tag "RPG-7";
@@ -46,7 +46,7 @@ Class MaliceRPG : SinAmmo{
 	}
 	States{Spawn: ROCK A -1; Stop;}
 }
-Class MaliceM202 : SinWeapon replaces SinRocketLauncher{
+Class MaliceM202 : SinWeapon{
 	Default{
 		Inventory.Icon "M202A0";
 		Tag "M202";

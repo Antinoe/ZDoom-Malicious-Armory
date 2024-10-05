@@ -1,5 +1,5 @@
 
-Class MaliceMP5 : SinWeapon replaces SinSMG{
+Class MaliceMP5 : SinWeapon{
 	Default{
 		Inventory.Icon "MP5ZA0";
 		Tag "MP5";

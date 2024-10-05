@@ -1,5 +1,5 @@
 
-Class MaliceGrenade : SinWeapon replaces SinGrenade{
+Class MaliceGrenade : SinWeapon{
 	Default{
 		Inventory.Icon "ZGRNA0";
 		Tag "$SINWEAP_GRENADE";

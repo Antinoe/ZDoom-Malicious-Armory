@@ -1,18 +1,17 @@
 
-Class MaliceM14 : SinWeapon replaces SinAncientRifle{
+Class MaliceMaroszek : SinWeapon{
 	Default{
 		Inventory.Icon "BR38A0";
-		Tag "M14";
+		Tag "Maroszek";
 		AttackSound "";
-		Inventory.Amount 19;
-		Inventory.MaxAmount 20;
-		Inventory.PickupMessage "Picked up an M14.";
-		SinItem.Description "The M14 is a robust, semi-automatic battle rifle chambered in 7.62mm NATO, known for its accuracy, range, and powerful stopping power. It served as the standard-issue rifle for the U.S. military in the early 1960s and remains in use today for designated marksman roles and ceremonial purposes.";
-		SinWeapon.AmmoType "7.62mm";
-		SinWeapon.AmmoLoaded "Malice762mmAmmo";
+		Inventory.Amount 9;
+		Inventory.MaxAmount 10;
+		Inventory.PickupMessage "Picked up a Maroszek.";
+		SinItem.Description "The Maroszek rifle, officially known as the Kb Ur wz. 35, is a Polish anti-tank rifle developed in the 1930s, designed to penetrate armored vehicles with its powerful 7.92mm armor-piercing rounds. Despite its lightweight design and portability, it was highly effective against early WWII tanks and armored vehicles.";
+		SinWeapon.AmmoType "7.92mm";
+		SinWeapon.AmmoLoaded "Malice792mmAmmo";
 		SinWeapon.FireType FIRE_AUTO;
 		SinWeapon.ReloadType RELOAD_TOP;
-		SinWeapon.DamageMultiplier 2;
 		SinWeapon.ClimbMultiplier 0.5,0.5;
 		SinWeapon.CanChamber 1;
 		SinWeapon.Chambered 1;
@@ -21,8 +20,6 @@ Class MaliceM14 : SinWeapon replaces SinAncientRifle{
 		SinWeapon.CasingVelocity 0,-2,8;
 		SinWeapon.DrySound "PM/GunClick";
 		SinWeapon.LoadSound "PM/RevolverBulletIn";
-		SinWeapon.MagOutSound "PM/RifleMagOut";
-		SinWeapon.MagInSound "PM/RifleMagIn";
 		//	NEED RIFLE OPEN/CLOSE ROUNDS.
 		SinWeapon.OpenSound "PM/HeavyRifleOpen";
 		SinWeapon.CloseSound "PM/HeavyRifleClose";
@@ -37,12 +34,14 @@ Class MaliceM14 : SinWeapon replaces SinAncientRifle{
 		icon=TexMan.CheckForTexture(ico,TexMan.Type_Any);
 		frame=curframe;
 	}
+	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
+	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
 		shooter.A_StartSound("ZombieRifleDistant",CHAN_7,CHANF_OVERLAP);
 		shooter.A_StartSound("ZombieSoldier/Rifle");
 	}
 }
-Class MaliceAncientRifleMod : MaliceM14{
+Class MaliceMaroszekMod : MaliceMaroszek{
 	Default{
 		Tag "$SINWEAP_SECRETMOD";
 		SinItem.Description "$SINWEAP_SECRETMODDESC";

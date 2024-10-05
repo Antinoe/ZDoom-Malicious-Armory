@@ -7,7 +7,15 @@ Class MaliceRecipeSawedOff : SinRecipe{
 }
 Class MaliceRecipeAncientRifle : SinRecipe{
 	Default{
-		SinRecipe.Ingredients "MaliceM14", "SinGunsmithKit";
-		SinRecipe.Result "MaliceAncientRifleMod", 1;
+		SinRecipe.Ingredients "MaliceMaroszek", "SinGunsmithKit";
+		SinRecipe.Result "MaliceMaroszekMod", 1;
+	}
+}
+
+Class MaliceRecipePistolAmmoPower : SinRecipe{
+	Default{
+		SinRecipe.Ingredients "Malice9mmAmmo", "SinGunpowder1";
+		SinRecipe.IngredientAmounts 10, 1;
+		SinRecipe.Result "Malice9mmAmmoPower", 10;
 	}
 }

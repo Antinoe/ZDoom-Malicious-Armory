@@ -44,7 +44,7 @@ Class MaliceM19 : SinWeapon replaces SinPistol{
 	}
 }
 */
-Class MaliceG17 : SinWeapon replaces SinPistol{
+Class MaliceG17 : SinWeapon{
 	Default{
 		Inventory.Icon "G17ZA0";
 		Tag "G17";

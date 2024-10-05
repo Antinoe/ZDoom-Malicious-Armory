@@ -1,6 +1,6 @@
 
 //	WORK
-Class MaliceChaingun : SinWeapon replaces SinChaingun{
+Class MaliceChaingun : SinWeapon{
 	int windupTimer;
 	Default{
 		Inventory.Icon "MGUNA0";
@@ -61,13 +61,13 @@ Class MaliceChaingun : SinWeapon replaces SinChaingun{
 }
 Class MaliceHeavyCarbine : SinWeapon{
 	Default{
-		Inventory.Icon "M16ZA0";
+		Inventory.Icon "PMHCA0";
 		Tag "Heavy Carbine";
-		Inventory.PickupMessage "Picked up an Assault Rifle.";
+		Inventory.PickupMessage "Picked up a Heavy Carbine.";
 		SinItem.Description "A compact yet robust firearm designed for close to mid-range combat, offering greater firepower and accuracy than standard carbines. It typically features a reinforced build for handling larger calibers, making it ideal for tactical scenarios where both mobility and stopping power are essential.";
-		SinWeapon.AmmoType "5.56mm";
-		SinWeapon.AmmoLoaded "Malice556mmAmmo";
-		SinWeapon.DefaultMagazine "Malice556mmMagExtended";
+		SinWeapon.AmmoType "7.62mm";
+		SinWeapon.AmmoLoaded "Malice762mmAmmo";
+		SinWeapon.DefaultMagazine "Malice762mmMagBox";
 		SinWeapon.FireType FIRE_AUTO;
 		SinWeapon.ReloadType RELOAD_MAG;
 		SinWeapon.Spread -0.5,-0.5;
@@ -83,7 +83,7 @@ Class MaliceHeavyCarbine : SinWeapon{
 		SinWeapon.OpenSound "PM/HeavyRifleOpen";
 		SinWeapon.CloseSound "PM/HeavyRifleClose";
 	}
-	States{Spawn: M16Z A -1; Stop;}
+	States{Spawn: PMHC A -1; Stop;}
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
@@ -118,7 +118,6 @@ Class MaliceAutocannon : SinWeapon{
 		SinWeapon.CloseSound "PM/HeavyRifleClose";
 	}
 	States{Spawn: ACNZ A -1; Stop;}
-	Override void HandleSprite(int status){cursprite=spawnstate.sprite;}
 	Override void PostBeginPlay(){
 		Super.PostBeginPlay();
 		shotsFired=0;
@@ -141,7 +140,7 @@ Class MaliceAutocannon : SinWeapon{
 		shotsFired++;
 	}
 }
-Class MalicePlasmaRifle : SinWeapon replaces SinPlasmaRifle{
+Class MalicePlasmaRifle : SinWeapon{
 	Default{
 		Inventory.Icon "PLASA0";
 		Tag "$SINWEAP_PLASMA";
@@ -205,4 +204,61 @@ Class MalicePlasmaRifle : SinWeapon replaces SinPlasmaRifle{
 		}
 		HandleSprite();
 	}
+}
+//	WORK
+Class MaliceSybariteCannon : SinWeapon{
+	int ammoMicroMissile;
+	int ammoGrenade;
+	int ammoNet;
+	Default{
+		Inventory.Icon "ACNZA0";
+		Inventory.Amount 100;
+		Inventory.MaxAmount 100;
+		Tag "Sybarite Cannon";
+		Inventory.PickupMessage "Picked up a Sybarite's Cannon.";
+		SinItem.Description "Sybarites wield heavily modified cannons designed to better capture stragglers. Luckily for you, one of them happened to drop this upon death.";
+		SinWeapon.FireType FIRE_AUTO;
+		SinWeapon.AttackType ATTACK_PROJECTILE;
+		SinWeapon.Projectile "PM_SybariteMicroMissile";
+		SinWeapon.Spread -0.5,-0.5;
+		SinWeapon.ClimbMultiplier 0.5,0.5;
+		SinWeapon.FireMode1 5,5;
+		SinWeapon.FireMode2 3,10;
+		SinWeapon.FireMode3 3,35;
+		SinItem.BigItem 1;
+		SinWeapon.CasingVelocity 0,-4,4;
+		SinWeapon.DrySound "PM/GunClick";
+		SinWeapon.MagOutSound "PM/HeavyRifleMagOut";
+		SinWeapon.MagInSound "PM/HeavyRifleMagIn";
+		SinWeapon.OpenSound "PM/HeavyRifleOpen";
+		SinWeapon.CloseSound "PM/HeavyRifleClose";
+	}
+	States{Spawn: ACNZ A -1; Stop;}
+	Override void PostBeginPlay(){
+		Super.PostBeginPlay();
+	}
+	/*
+	Override void DoEffect(){
+		If(amount<amountmax){amount++;}
+		Return Super.DoEffect();
+	}
+	*/
+	Override bool WeaponPreFire(SinPlayer shooter, SinHands gun){
+		If(firemode==0){
+			ammocost=1;
+			proj="PM_SybariteMicroMissile";
+		}
+		If(firemode==1){
+			ammocost=3;
+			proj="PM_SybGrenade";
+		}
+		If(firemode==2){
+			ammocost=1;
+			proj="PM_SybariteNet";
+		}
+		Return Super.WeaponPreFire(shooter,gun);
+	}
+	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
+	Override void OnUnequip(SinPlayer user, SinHands gun){}
+	Override void WeaponFire(SinPlayer shooter, SinHands gun){}
 }
