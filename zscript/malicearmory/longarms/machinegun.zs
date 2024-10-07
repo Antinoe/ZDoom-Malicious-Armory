@@ -140,6 +140,7 @@ Class MaliceAutocannon : SinWeapon{
 		shotsFired++;
 	}
 }
+//	WORK
 Class MalicePlasmaRifle : SinWeapon{
 	Default{
 		Inventory.Icon "PLASA0";
@@ -155,10 +156,15 @@ Class MalicePlasmaRifle : SinWeapon{
 		SinWeapon.Noise 256;
 		SinWeapon.AmmoCost 2;
 		SinWeapon.FireMode1 999,4;
+		SinWeapon.FireMode2 1,7;
 		SinWeapon.DefaultMagazine "MaliceCell";
 		SinItem.AmountMultiplier 1.0;
 		SinItem.BigItem 1;
 		SinWeapon.DrySound "weapons/plasdry";
+		SinWeapon.ChargeSound "HellSoldier/ChargeReady2";
+		SinWeapon.FullSound "HellSoldier/ChargeReady";
+		SinWeapon.CancelSound "HellSoldier/ChargeClose";
+		SinWeapon.ReadySound "weapons/plsalt3";
 	}
 	States{Spawn: PLAS A -1; Stop; PLAH A 0; PLBS A 0; PLBH A 0;}
 	Override void HandleSprite(int status){
@@ -203,6 +209,36 @@ Class MalicePlasmaRifle : SinWeapon{
 			multishot=1;
 		}
 		HandleSprite();
+	}
+}
+//	WORK
+Class MaliceM2 : SinWeapon{
+	Default{
+		Inventory.Icon "M2ZZA0";
+		Tag "M2";
+		Inventory.PickupMessage "Picked up an M2.";
+		SinItem.Description "The M2 Flamethrower is a portable, shoulder-fired weapon used during World War II, designed to project a stream of ignited fuel to clear enemy bunkers and trenches. It was highly effective at close range, creating intense fire and destruction, but limited by its weight and fuel capacity.";
+		SinWeapon.AmmoType "Fuel";
+		SinWeapon.DefaultMagazine "MaliceGasolineTank";
+		SinWeapon.FireType FIRE_AUTO;
+		SinWeapon.ReloadType RELOAD_MAG;
+		SinWeapon.Spread -0.5,-0.5;
+		SinWeapon.ClimbMultiplier 0.5,0.5;
+		SinWeapon.AmmoCost 4;
+		SinWeapon.FireMode1 999,2;
+		SinItem.BigItem 1;
+		SinWeapon.CasingVelocity 0,-4,4;
+		SinWeapon.DrySound "PM/GunClick";
+		SinWeapon.MagOutSound "PM/HeavyRifleMagOut";
+		SinWeapon.MagInSound "PM/HeavyRifleMagIn";
+		SinWeapon.OpenSound "PM/HeavyRifleOpen";
+		SinWeapon.CloseSound "PM/HeavyRifleClose";
+	}
+	States{Spawn: M2ZZ A -1; Stop;}
+	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
+	Override void OnUnequip(SinPlayer user, SinHands gun){}
+	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		//shooter.A_StartSound("CyberFodder/Flamer",CHAN_5,1,1);
 	}
 }
 //	WORK

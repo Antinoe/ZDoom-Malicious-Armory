@@ -20,7 +20,7 @@ Class MaliceArmory : EventHandler{
 			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM16";}
 		}
 		If(e.Replacee is "PlasmaRifle"){
-			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MalicePlasmaRifle";}
+			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM2";}
 		}
 		If(e.Replacee is "RocketLauncher"){
 			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceRPG7";}
@@ -50,7 +50,7 @@ Class MaliceArmory : EventHandler{
 			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM202";}
 		}
 		If(e.Replacee is "SinPlasmaRifle"){
-			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MalicePlasmaRifle";}
+			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM2";}
 		}
 		If(e.Replacee is "SinAncientRifle"){
 			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceMaroszek";}
@@ -70,10 +70,8 @@ Class MaliceArmory : EventHandler{
 		If(e.Replacee is "SinRifleBox"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="Malice556mmBox";}}
 		If(e.Replacee is "SinRifleClip"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="Malice556mmMag";}}
 		If(e.Replacee is "SinAncientAmmo"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="Malice792mmAmmo";}}
-		If(e.Replacee is "SinCell"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceCell";}}
-		If(e.Replacee is "SinCellPack"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceCellPack";}}
-		If(e.Replacee is "SinPlasmaRifleHeatsink"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MalicePlasmaRifleHeatsink";}}
-		If(e.Replacee is "SinPlasmaRifleBarrel"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MalicePlasmaRifleBarrel";}}
+		If(e.Replacee is "SinCell"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceGasoline";}}
+		If(e.Replacee is "SinCellPack"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceGasolineTank";}}
 		If(e.Replacee is "SinGrenade"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceGrenade";}}
 	}
 }

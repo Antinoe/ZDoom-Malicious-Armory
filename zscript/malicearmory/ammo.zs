@@ -543,6 +543,40 @@ Class MaliceAutocannonMag : SinAmmoBox{
 		icon=TexMan.CheckForTexture(ico,TexMan.Type_Any);
 	}
 }
+Class MaliceGasoline : SinAmmo{
+	Default{
+		Inventory.Icon "MBULA0";
+		Tag "Gasoline";
+		Inventory.Amount 150;
+		Inventory.MaxAmount 400;
+		Inventory.PickupMessage "Picked up some Gasoline.";
+		SinItem.Description "A highly flammable liquid fuel refined from crude oil, commonly used to power internal combustion engines in cars, motorcycles, and other vehicles. It is known for its energy density and volatility, making it essential for transportation but also hazardous if mishandled.";
+		SinAmmo.AmmoType "Fuel";
+		SinAmmo.TypeName "GAS";
+		SinAmmo.AttackType ATTACK_PROJECTILE;
+		SinAmmo.Projectile "PM_CyberFodderFire";
+		SinAmmo.Spread 0.5,0.5;
+		SinAmmo.Noise 256;
+		SinAmmo.Recoil 0;
+		SinItem.Stackable 1;
+		SinItem.RemoveWhenEmpty 1;
+	}
+	States{Spawn: MBUL A -1; Stop;}
+}
+Class MaliceGasolineTank : SinAmmoBox{
+	Default{
+		Inventory.Icon "CLIPA0";
+		Tag "Gasoline Tank";
+		Inventory.Amount 400;
+		Inventory.MaxAmount 400;
+		Inventory.PickupMessage "Picked up a Gasoline Tank.";
+		SinItem.Description "A storage container designed to hold gasoline, typically used to fuel vehicles, generators, or other machinery. Made from materials like steel or plastic, it is engineered to safely contain the flammable liquid and prevent leaks or spills.";
+		SinAmmoBox.AmmoType "Fuel";
+		SinAmmoBox.LoadedAmmo "MaliceGasoline";
+		SinAmmoBox.Magazine 1;
+	}
+	States{Spawn: CLIP A -1; Stop;}
+}
 Class MaliceCell : SinAmmoBox{
 	Default{
 		Inventory.Icon "CELLA0";

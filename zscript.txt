@@ -1,6 +1,5 @@
 version "4.10.0"
 #include "zscript/malicearmory/ammo.zs"
-#include "zscript/malicearmory/attachments.zs"
 #include "zscript/malicearmory/handlers.zs"
 #include "zscript/malicearmory/recipes.zs"
 #include "zscript/malicearmory/sidearms/handgun.zs"
