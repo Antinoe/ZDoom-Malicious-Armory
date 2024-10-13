@@ -10,6 +10,10 @@ Class MaliceArmory : EventHandler{
 	Override void CheckReplacement(ReplaceEvent e){
 		//int rand = Random(1,10);
 		//If(rand==1){Do something.}
+		If(e.Replacee is "GreenArmor"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceBallisticVest";}}
+		If(e.Replacee is "BlueArmor"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceOuterTacticalVest";}}
+		If(e.Replacee is "SinGreenArmor"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceBallisticVest";}}
+		If(e.Replacee is "SinBlueArmor"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceOuterTacticalVest";}}
 		If(e.Replacee is "Pistol"){
 			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceG17";}
 		}
@@ -23,7 +27,7 @@ Class MaliceArmory : EventHandler{
 			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM2";}
 		}
 		If(e.Replacee is "RocketLauncher"){
-			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceRPG7";}
+			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM79";}
 		}
 		If(e.Replacee is "BFG9000"){
 			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM202";}
@@ -46,11 +50,11 @@ Class MaliceArmory : EventHandler{
 		If(e.Replacee is "SinChaingun"){
 			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM16";}
 		}
-		If(e.Replacee is "SinRocketLauncher"){
-			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM202";}
-		}
 		If(e.Replacee is "SinPlasmaRifle"){
 			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM2";}
+		}
+		If(e.Replacee is "SinRocketLauncher"){
+			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM202";}
 		}
 		If(e.Replacee is "SinAncientRifle"){
 			If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceMaroszek";}
@@ -72,6 +76,6 @@ Class MaliceArmory : EventHandler{
 		If(e.Replacee is "SinAncientAmmo"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="Malice792mmAmmo";}}
 		If(e.Replacee is "SinCell"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceGasoline";}}
 		If(e.Replacee is "SinCellPack"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceGasolineTank";}}
-		If(e.Replacee is "SinGrenade"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceGrenade";}}
+		If(e.Replacee is "SinGrenade"){If(cvar.GetCVar("ma_enable").getbool()){e.Replacement="MaliceM67";}}
 	}
 }

@@ -143,7 +143,7 @@ Class Malice9mmMagExtended : SinAmmoBox{
 	}
 }
 //	WORK
-Class MaliceMagnumAmmo : SinAmmo{
+Class Malice44MagnumAmmo : SinAmmo{
 	Default{
 		Inventory.Icon "PBULA0";
 		Tag "Magnum Ammunition";
@@ -451,23 +451,33 @@ Class Malice762mmMag : SinAmmoBox{
 }
 Class Malice762mmMagBox : SinAmmoBox{
 	Default{
-		Inventory.Icon "CLIPA0";
+		Inventory.Icon "X012A0";
 		Tag "7.62mm Box Magazine";
 		Inventory.Amount 120;
 		Inventory.MaxAmount 120;
 		Inventory.PickupMessage "Picked up a 7.62mm Box Magazine.";
-		SinItem.Description "A Heavy Carbine Magazine, capable of holding 120 7.62mm Rounds.";
+		SinItem.Description "A box magazine capable of holding 120 7.62mm rounds.";
 		SinAmmoBox.AmmoType "7.62mm";
 		SinAmmoBox.LoadedAmmo "Malice762mmAmmo";
 		SinAmmoBox.Magazine 1;
 	}
-	States{Spawn: CLIP A -1; Stop;}
-	Override void HandleSprite(int status){
-		string ico = "CLIP";
-		If(Amount>0){frame=0; ico=ico.."A0";}
-		Else{frame=1; ico=ico.."B0";}
-		icon=TexMan.CheckForTexture(ico,TexMan.Type_Any);
+	States{Spawn: X012 A -1; Stop;}
+}
+Class Malice762mmMagMinigun : SinAmmoBox{
+	Default{
+		Inventory.Icon "X012A0";
+		Tag "7.62mm Minigun Magazine";
+		//Inventory.Amount 4400;
+		//Inventory.MaxAmount 4400;
+		Inventory.Amount 1500;
+		Inventory.MaxAmount 1500;
+		Inventory.PickupMessage "Picked up a 7.62mm Minigun Magazine.";
+		SinItem.Description "The M134 Minigun's 4,400 round box magazine is a large ammunition container designed to feed the high rate of fire required by the minigun. It ensures continuous operation in combat, holding a massive quantity of 7.62mm rounds to support sustained suppressive fire for extended engagements.";
+		SinAmmoBox.AmmoType "7.62mm";
+		SinAmmoBox.LoadedAmmo "Malice762mmAmmo";
+		SinAmmoBox.Magazine 1;
 	}
+	States{Spawn: X012 A -1; Stop;}
 }
 Class Malice792mmAmmo : SinAmmo{
 	Default{

@@ -30,7 +30,7 @@ Class MaliceG17 : SinWeapon{
 Class MaliceM29 : SinWeapon{
 	Default{
 		Scale 0.85;
-		Inventory.Icon "REVZA0";
+		Inventory.Icon "M29ZA0";
 		Tag "M29";
 		Inventory.Amount 5;
 		Inventory.MaxAmount 5;
@@ -54,7 +54,7 @@ Class MaliceM29 : SinWeapon{
 		//SinWeapon.OpenSound "PM/RevolverOpen";
 		//SinWeapon.CloseSound "PM/RevolverClose";
 	}
-	States{Spawn: REVZ A -1; Stop;}
+	States{Spawn: M29Z A -1; Stop;}
 	Override void HandleSprite(int status){cursprite=spawnstate.sprite;}
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/RevolverHammer");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}

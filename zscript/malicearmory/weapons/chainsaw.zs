@@ -1,14 +1,14 @@
 
-Class MaliceGrenade : SinWeapon{
+Class MaliceM67 : SinWeapon{
 	Default{
 		Inventory.Icon "ZGRNA0";
-		Tag "$SINWEAP_GRENADE";
+		Tag "M67";
 		AttackSound "weapons/throw";
 		Inventory.Amount 1;
 		Inventory.MaxAmount 4;
 		Inventory.PickupSound "misc/i_pkup";
-		Inventory.PickupMessage "$SINWEAP_GRENADEPKUP";
-		SinItem.Description "$SINWEAP_GRENADEDESC";
+		Inventory.PickupMessage "Picked up an M67.";
+		SinItem.Description "The M67 grenade is a small, hand-thrown explosive device used by military forces, designed to produce a powerful blast with fragmentation. Upon detonation, it releases metal fragments, making it highly effective for clearing enemy positions and personnel within a short radius.";
 		SinWeapon.FireType FIRE_THROWN;
 		SinWeapon.AttackType ATTACK_PROJECTILE;
 		SinWeapon.Projectile "MaliceGrenadeThrown";

@@ -17,6 +17,7 @@ Class MaliceM16 : SinWeapon{
 		SinWeapon.FireMode2 3,1;
 		SinItem.BigItem 1;
 		SinWeapon.CasingVelocity 0,-4,4;
+		SinWeapon.MaxMagSize 100;
 		SinWeapon.DrySound "PM/GunClick";
 		SinWeapon.MagOutSound "PM/RifleMagOut";
 		SinWeapon.MagInSound "PM/RifleMagIn";
@@ -85,41 +86,30 @@ Class MaliceMaroszekMod : MaliceMaroszek{
 	States{Spawn: BR39 A -1; Stop;}
 }
 //	WORK
-Class MaliceChaingun : SinWeapon{
+Class MaliceM134 : SinWeapon{
 	int windupTimer;
 	Default{
-		Inventory.Icon "MGUNA0";
-		Tag "$SINWEAP_CHAIN";
-		Inventory.PickupMessage "$SINWEAP_CHAINPKUP";
-		SinItem.Description "$SINWEAP_CHAINDESC";
-		SinWeapon.AmmoType "5.56mm";
-		SinWeapon.AmmoLoaded "Malice556mmAmmo";
-		SinWeapon.DefaultMagazine "Malice556mmMagBox";
+		Inventory.Icon "M134A0";
+		Tag "M134";
+		Inventory.PickupMessage "Picked up an M134.";
+		SinItem.Description "The M134 Minigun is a rotary, multi-barrel machine gun capable of firing up to 6,000 rounds per minute, using an electrically-driven system. It is highly effective in providing sustained, high-volume fire and is often mounted on helicopters, vehicles, and aircraft for suppressing enemy forces.";
+		SinWeapon.AmmoType "7.62mm";
+		SinWeapon.AmmoLoaded "Malice762mmAmmo";
+		SinWeapon.DefaultMagazine "Malice762mmMagBox";
 		SinWeapon.FireType FIRE_AUTO;
 		SinWeapon.ReloadType RELOAD_MAG;
 		SinWeapon.CanChamber 1;
 		SinWeapon.FireMode1 999,2;
 		SinItem.BigItem 1;
 		SinWeapon.CasingVelocity 0,-4,2;
+		SinWeapon.MinMagSize 100;
 		SinWeapon.DrySound "PM/GunClick";
 		SinWeapon.MagOutSound "PM/GatlingReady";
 		SinWeapon.MagInSound "PM/GatlingBeltCram";
 		SinWeapon.OpenSound "PM/HeavyRifleOpen";
 		SinWeapon.CloseSound "PM/HeavyRifleClose";
 	}
-	States{Spawn: MGUN A -1; Stop; MGUB A 0; MGSN A 0; MGSB A 0;}
-	Override void HandleSprite(int status){
-		string ico = "MG";
-		If(attachments.Find("MaliceChaingunBarrel")!=attachments.Size()){ico=ico.."S";}
-		Else{ico=ico.."U";}
-		If(attachments.Find("MaliceChaingunBipod")!=attachments.Size()){ico=ico.."B";}
-		Else{ico=ico.."N";}
-		cursprite=GetSpriteIndex(ico);
-		If(MaxAmount>0){curframe=0; ico=ico.."A0";}
-		Else{curframe=1; ico=ico.."B0";}
-		icon=TexMan.CheckForTexture(ico,TexMan.Type_Any);
-		sprite=cursprite; frame=curframe;
-	}
+	States{Spawn: M134 A -1; Stop;}
 	/*
 	Override void PostBeginPlay(){
 		Super.PostBeginPlay();
@@ -138,10 +128,25 @@ Class MaliceChaingun : SinWeapon{
 	}
 	*/
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
-	Override void OnUnequip(SinPlayer user, SinHands gun){}
+	Override void OnUnequip(SinPlayer user, SinHands gun){
+		user.A_StopSounds(5,5);
+	}
+	Override bool WeaponPreFire(SinPlayer shooter, SinHands gun){
+		If(!Super.WeaponReFire(shooter,gun)){shooter.A_StopSounds(5,5);}
+		If(Amount<=0){shooter.A_StopSounds(5,5);}
+		Return Super.WeaponPreFire(shooter,gun);
+	}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
-		shooter.A_StartSound("MutatedGunner/Fire");
-		shooter.A_StartSound("GunnerRifleDistant", CHAN_7,CHANF_OVERLAP);
+		shooter.A_StartSound("MutatedGunner/Fire",CHAN_5,CHANF_LOOPING);
+		shooter.A_StartSound("GunnerRifleDistant",CHAN_7,CHANF_OVERLAP);
+	}
+	Override bool WeaponReFire(SinPlayer shooter, SinHands gun){
+		If(!Super.WeaponReFire(shooter,gun)){
+			shooter.A_StopSounds(5,5);
+			Return 0;
+		}
+		Else{Return 1;}
+		Return Super.WeaponReFire(shooter,gun);
 	}
 }
 Class MaliceHeavyCarbine : SinWeapon{
@@ -162,6 +167,7 @@ Class MaliceHeavyCarbine : SinWeapon{
 		SinWeapon.FireMode2 999,6;
 		SinItem.BigItem 1;
 		SinWeapon.CasingVelocity 0,-4,4;
+		SinWeapon.MinMagSize 100;
 		SinWeapon.DrySound "PM/GunClick";
 		SinWeapon.MagOutSound "PM/HeavyRifleMagOut";
 		SinWeapon.MagInSound "PM/HeavyRifleMagIn";

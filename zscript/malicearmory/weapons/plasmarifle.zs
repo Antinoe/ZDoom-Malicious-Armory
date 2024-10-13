@@ -95,8 +95,24 @@ Class MaliceM2 : SinWeapon{
 	}
 	States{Spawn: M2ZZ A -1; Stop;}
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
-	Override void OnUnequip(SinPlayer user, SinHands gun){}
+	Override void OnUnequip(SinPlayer user, SinHands gun){
+		user.A_StopSounds(5,5);
+	}
+	Override bool WeaponPreFire(SinPlayer shooter, SinHands gun){
+		If(!Super.WeaponReFire(shooter,gun)){shooter.A_StopSounds(5,5);}
+		If(Amount<=0){shooter.A_StopSounds(5,5);}
+		Return Super.WeaponPreFire(shooter,gun);
+	}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
 		//shooter.A_StartSound("CyberFodder/Flamer",CHAN_5,1,1);
+		shooter.A_StartSound("CyberFodder/Flamer",CHAN_5,CHANF_LOOPING);
+	}
+	Override bool WeaponReFire(SinPlayer shooter, SinHands gun){
+		If(!Super.WeaponReFire(shooter,gun)){
+			shooter.A_StopSounds(5,5);
+			Return 0;
+		}
+		Else{Return 1;}
+		Return Super.WeaponReFire(shooter,gun);
 	}
 }
