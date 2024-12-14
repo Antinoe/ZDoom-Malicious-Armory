@@ -1,14 +1,14 @@
 
-Class MaliceM37 : SinWeapon{
+Class M37 : SinWeapon{
 	Default{
 		Inventory.Icon "1897A0";
 		Tag "M37";
 		Inventory.Amount 7;
 		Inventory.MaxAmount 7;
 		Inventory.PickupMessage "Picked up an M37.";
-		SinItem.Description "The Ithaca Model 37 is a pump-action shotgun known for its bottom-ejection design, making it ambidextrous and less prone to debris jams. Popular with hunters, law enforcement, and the military, it is praised for its reliability, smooth operation, and durability.";
+		SinItem.Description "A pump-action shotgun known for its bottom-ejection design, making it ambidextrous and less prone to debris jams. Popular with hunters, law enforcement, and the military, it is praised for its reliability, smooth operation, and durability.";
 		SinWeapon.AmmoType "12Gauge";
-		SinWeapon.AmmoLoaded "Malice12GaugeBuckshot";
+		SinWeapon.AmmoLoaded "MA12GaugeBuckshot";
 		SinWeapon.FireType FIRE_MANUAL;
 		SinWeapon.ReloadType RELOAD_BOTTOM;
 		SinWeapon.HitscanDamage -1;
@@ -29,7 +29,7 @@ Class MaliceM37 : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("MaliciousArmory/Shotgun/BoltOpen");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
-		If(ammoload=="Malice12GaugeSlug"){
+		If(ammoload=="MA12GaugeSlug"){
 			shooter.A_StartSound("SlugShotgunner/Fire",CHAN_5);
 		}
 		Else{

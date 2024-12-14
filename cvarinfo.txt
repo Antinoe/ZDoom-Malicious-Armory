@@ -1,3 +1,4 @@
 
 server bool ma_enable=true;
 server bool ma_dropweap=true;
+server bool ma_recoil=false;

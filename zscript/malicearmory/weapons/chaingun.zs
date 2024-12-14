@@ -1,13 +1,13 @@
 
-Class MaliceM16 : SinWeapon{
+Class M16 : SinWeapon{
 	Default{
 		Inventory.Icon "M16ZA0";
 		Tag "M16";
 		Inventory.PickupMessage "Picked up an M16.";
-		SinItem.Description "The M16 is a lightweight, gas-operated, 5.56mm NATO assault rifle, known for its high rate of fire and accuracy at range. It has been the standard-issue rifle for the U.S. military since the Vietnam War, praised for its adaptability and modular design.";
-		SinWeapon.AmmoType "5.56mm";
-		SinWeapon.AmmoLoaded "Malice556mmAmmo";
-		SinWeapon.DefaultMagazine "Malice556mmMag";
+		SinItem.Description "A lightweight, gas-operated, 5.56x45mm NATO assault rifle, known for its high rate of fire and accuracy at range. It has been the standard-issue rifle for the U.S. military since the Vietnam War, praised for its adaptability and modular design.";
+		SinWeapon.AmmoType "5.56x45mm";
+		SinWeapon.AmmoLoaded "MA556x45mm";
+		SinWeapon.DefaultMagazine "M16Mag";
 		SinWeapon.FireType FIRE_AUTO;
 		SinWeapon.ReloadType RELOAD_MAG;
 		SinWeapon.Spread -0.5,-0.5;
@@ -34,7 +34,47 @@ Class MaliceM16 : SinWeapon{
 		shooter.A_StartSound("ZombieSoldier/Rifle");
 	}
 }
-Class MaliceMaroszek : SinWeapon{
+Class M16Mag : SinAmmoBox{
+	Default{
+		Inventory.Icon "CLIPA0";
+		Tag "M16 Mag";
+		Inventory.Amount 30;
+		Inventory.MaxAmount 30;
+		Inventory.PickupMessage "Picked up an M16 Magazine.";
+		SinItem.Description "A Rifle Magazine, capable of holding 30 5.56x45mm Rounds.";
+		SinAmmoBox.AmmoType "5.56x45mm";
+		SinAmmoBox.LoadedAmmo "MA556x45mm";
+		SinAmmoBox.Magazine 1;
+	}
+	States{Spawn: CLIP A -1; Stop;}
+	Override void HandleSprite(int status){
+		string ico = "CLIP";
+		If(Amount>0){frame=0; ico=ico.."A0";}
+		Else{frame=1; ico=ico.."B0";}
+		icon=TexMan.CheckForTexture(ico,TexMan.Type_Any);
+	}
+}
+Class M16MagExtended : SinAmmoBox{
+	Default{
+		Inventory.Icon "CLIPA0";
+		Tag "Extended M16 Mag";
+		Inventory.Amount 60;
+		Inventory.MaxAmount 60;
+		Inventory.PickupMessage "Picked up an Extended M16 Magazine.";
+		SinItem.Description "An extended Rifle Magazine, capable of holding 60 5.56x45mm Rounds.";
+		SinAmmoBox.AmmoType "5.56x45mm";
+		SinAmmoBox.LoadedAmmo "MA556x45mm";
+		SinAmmoBox.Magazine 1;
+	}
+	States{Spawn: CLIP A -1; Stop;}
+	Override void HandleSprite(int status){
+		string ico = "CLIP";
+		If(Amount>0){frame=0; ico=ico.."A0";}
+		Else{frame=1; ico=ico.."B0";}
+		icon=TexMan.CheckForTexture(ico,TexMan.Type_Any);
+	}
+}
+Class Maroszek : SinWeapon{
 	Default{
 		Inventory.Icon "BR38A0";
 		Tag "Maroszek";
@@ -44,7 +84,7 @@ Class MaliceMaroszek : SinWeapon{
 		Inventory.PickupMessage "Picked up a Maroszek.";
 		SinItem.Description "The Maroszek rifle, officially known as the Kb Ur wz. 35, is a Polish anti-tank rifle developed in the 1930s, designed to penetrate armored vehicles with its powerful 7.92mm armor-piercing rounds. Despite its lightweight design and portability, it was highly effective against early WWII tanks and armored vehicles.";
 		SinWeapon.AmmoType "7.92mm";
-		SinWeapon.AmmoLoaded "Malice792mmAmmo";
+		SinWeapon.AmmoLoaded "MA792mm";
 		SinWeapon.FireType FIRE_AUTO;
 		SinWeapon.ReloadType RELOAD_TOP;
 		SinWeapon.ClimbMultiplier 0.5,0.5;
@@ -76,26 +116,26 @@ Class MaliceMaroszek : SinWeapon{
 		shooter.A_StartSound("ZombieSoldier/Rifle");
 	}
 }
-Class MaliceMaroszekMod : MaliceMaroszek{
+Class MaroszekMod : Maroszek{
 	Default{
 		Tag "$SINWEAP_SECRETMOD";
 		SinItem.Description "$SINWEAP_SECRETMODDESC";
-		SinWeapon.AmmoType "5.56mm";
-		SinWeapon.AmmoLoaded "Malice556mmAmmo";
+		SinWeapon.AmmoType "5.56x45mm";
+		SinWeapon.AmmoLoaded "MA556x45mm";
 	}
 	States{Spawn: BR39 A -1; Stop;}
 }
 //	WORK
-Class MaliceM134 : SinWeapon{
+Class M134 : SinWeapon{
 	int windupTimer;
 	Default{
 		Inventory.Icon "M134A0";
 		Tag "M134";
 		Inventory.PickupMessage "Picked up an M134.";
-		SinItem.Description "The M134 Minigun is a rotary, multi-barrel machine gun capable of firing up to 6,000 rounds per minute, using an electrically-driven system. It is highly effective in providing sustained, high-volume fire and is often mounted on helicopters, vehicles, and aircraft for suppressing enemy forces.";
+		SinItem.Description "A rotary, multi-barrel machine gun capable of firing up to 6,000 rounds per minute, using an electrically-driven system. It is highly effective in providing sustained, high-volume fire and is often mounted on helicopters, vehicles, and aircraft for suppressing enemy forces.";
 		SinWeapon.AmmoType "7.62mm";
-		SinWeapon.AmmoLoaded "Malice762mmAmmo";
-		SinWeapon.DefaultMagazine "Malice762mmMagBox";
+		SinWeapon.AmmoLoaded "MA762mm";
+		SinWeapon.DefaultMagazine "MA762mmMagBox";
 		SinWeapon.FireType FIRE_AUTO;
 		SinWeapon.ReloadType RELOAD_MAG;
 		SinWeapon.CanChamber 1;
@@ -149,15 +189,15 @@ Class MaliceM134 : SinWeapon{
 		Return Super.WeaponReFire(shooter,gun);
 	}
 }
-Class MaliceHeavyCarbine : SinWeapon{
+Class HeavyCarbine : SinWeapon{
 	Default{
 		Inventory.Icon "PMHCA0";
 		Tag "Heavy Carbine";
 		Inventory.PickupMessage "Picked up a Heavy Carbine.";
 		SinItem.Description "A compact yet robust firearm designed for close to mid-range combat, offering greater firepower and accuracy than standard carbines. It typically features a reinforced build for handling larger calibers, making it ideal for tactical scenarios where both mobility and stopping power are essential.";
 		SinWeapon.AmmoType "7.62mm";
-		SinWeapon.AmmoLoaded "Malice762mmAmmo";
-		SinWeapon.DefaultMagazine "Malice762mmMagBox";
+		SinWeapon.AmmoLoaded "MA762mm";
+		SinWeapon.DefaultMagazine "MA762mmMagBox";
 		SinWeapon.FireType FIRE_AUTO;
 		SinWeapon.ReloadType RELOAD_MAG;
 		SinWeapon.Spread -0.5,-0.5;
@@ -183,7 +223,7 @@ Class MaliceHeavyCarbine : SinWeapon{
 	}
 }
 //	WORK
-Class MaliceAutocannon : SinWeapon{
+Class MAAutocannon : SinWeapon{
 	int shotsFired;
 	Default{
 		Inventory.Icon "ACNZA0";
@@ -191,8 +231,8 @@ Class MaliceAutocannon : SinWeapon{
 		Inventory.PickupMessage "Picked up an Autocannon.";
 		SinItem.Description "A powerful, high-caliber firearm designed to deliver rapid, sustained fire with explosive rounds, typically used against vehicles or fortified positions. Due to its size and recoil, it is rare and usually only handled by individuals with advanced strength or specialized equipment.";
 		SinWeapon.AmmoType "20mm";
-		SinWeapon.AmmoLoaded "MaliceAutocannonAmmo";
-		SinWeapon.DefaultMagazine "MaliceAutocannonMag";
+		SinWeapon.AmmoLoaded "MA20x139mm";
+		SinWeapon.DefaultMagazine "AutocannonMag";
 		SinWeapon.FireType FIRE_AUTO;
 		SinWeapon.ReloadType RELOAD_MAG;
 		SinWeapon.Spread -0.5,-0.5;
@@ -231,8 +271,28 @@ Class MaliceAutocannon : SinWeapon{
 		shotsFired++;
 	}
 }
+Class AutocannonMag : SinAmmoBox{
+	Default{
+		Inventory.Icon "CLIPA0";
+		Tag "Autocannon Mag";
+		Inventory.Amount 240;
+		Inventory.MaxAmount 240;
+		Inventory.PickupMessage "Picked up an Autocannon clip.";
+		SinItem.Description "A large, robust ammunition storage device designed to hold and feed 20mm rounds into firearms, such as autocannons or heavy machine guns. This ensures a continuous supply of high-caliber ammunition for rapid firing in combat or defense scenarios.";
+		SinAmmoBox.AmmoType "20mm";
+		SinAmmoBox.LoadedAmmo "MA20x139mm";
+		SinAmmoBox.Magazine 1;
+	}
+	States{Spawn: CLIP A -1; Stop;}
+	Override void HandleSprite(int status){
+		string ico = "CLIP";
+		If(Amount>0){frame=0; ico=ico.."A0";}
+		Else{frame=1; ico=ico.."B0";}
+		icon=TexMan.CheckForTexture(ico,TexMan.Type_Any);
+	}
+}
 //	WORK
-Class MaliceSybariteCannon : SinWeapon{
+Class SybariteCannon : SinWeapon{
 	int ammoMicroMissile;
 	int ammoGrenade;
 	int ammoNet;

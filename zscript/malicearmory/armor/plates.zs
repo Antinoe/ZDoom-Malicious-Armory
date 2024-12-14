@@ -1,5 +1,5 @@
 
-Class MaliceSoftArmorPanelKevlar : SinItem{
+Class MASoftArmorPanelKevlar : SinItem{
 	Default{
 		Inventory.Icon "BPLTA0";
 		Inventory.Amount 1;
@@ -12,7 +12,7 @@ Class MaliceSoftArmorPanelKevlar : SinItem{
 	}
 	States{Spawn: BPLT A -1; Stop;}
 }
-Class MaliceBallisticPlateSteel : SinItem{
+Class MABallisticPlateSteel : SinItem{
 	Default{
 		Inventory.Icon "BPLTA0";
 		Inventory.Amount 1;
@@ -25,7 +25,7 @@ Class MaliceBallisticPlateSteel : SinItem{
 	}
 	States{Spawn: BPLT A -1; Stop;}
 }
-Class MaliceBallisticPlateCeramic : SinItem{
+Class MABallisticPlateCeramic : SinItem{
 	Default{
 		Inventory.Icon "BPLTA0";
 		Inventory.Amount 1;

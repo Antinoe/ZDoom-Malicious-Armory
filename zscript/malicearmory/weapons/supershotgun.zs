@@ -1,14 +1,14 @@
 
 //	WORK
-Class MaliceM21 : SinWeapon{
+Class M21 : SinWeapon{
 	Default{
 		Inventory.Icon "DBSGA0";
 		Tag "M21";
 		AttackSound "";
 		Inventory.PickupMessage "Picked up an M21.";
-		SinItem.Description "The Winchester Model 21 is a premium double-barrel shotgun known for its durability and craftsmanship, offering side-by-side barrels. Manufactured between 1931 and 1960, it is highly regarded for its balance, reliability, and smooth handling, making it a favorite among hunters and collectors.";
+		SinItem.Description "A premium double-barrel shotgun known for its durability and craftsmanship, offering side-by-side barrels. Manufactured between 1931 and 1960, it is highly regarded for its balance, reliability, and smooth handling, making it a favorite among hunters and collectors.";
 		SinWeapon.AmmoType "12Gauge";
-		SinWeapon.AmmoLoaded "Malice12GaugeBirdshot";
+		SinWeapon.AmmoLoaded "MA12GaugeBirdshot";
 		SinWeapon.FireType FIRE_DOUBLE;
 		SinWeapon.SpreadMultiplier 0.5,0.5;
 		SinWeapon.Climb -1,-1;
@@ -24,7 +24,7 @@ Class MaliceM21 : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("weapons/sshoto");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
-		If(ammoload=="Malice12GaugeSlug"){
+		If(ammoload=="MA12GaugeSlug"){
 			shooter.A_StartSound("SlugShotgunner/Fire",CHAN_5);
 		}
 		Else{
@@ -34,7 +34,7 @@ Class MaliceM21 : SinWeapon{
 	}
 }
 //	WORK
-Class MaliceSawedOff : SinWeapon{
+Class MASawedOff : SinWeapon{
 	Default{
 		Inventory.Icon "SAWDA0";
 		Tag "$SINWEAP_SSGMOD";
@@ -42,7 +42,7 @@ Class MaliceSawedOff : SinWeapon{
 		Inventory.PickupMessage "$SINWEAP_SSGMODPKUP";
 		SinItem.Description "$SINWEAP_SSGMODDESC";
 		SinWeapon.AmmoType "12Gauge";
-		SinWeapon.AmmoLoaded "Malice12GaugeBuckshot";
+		SinWeapon.AmmoLoaded "MA12GaugeBuckshot";
 		SinWeapon.FireType FIRE_DOUBLE;
 		SinWeapon.HitscanDamage -2;
 		SinWeapon.SpreadMultiplier 2,2;
@@ -59,7 +59,7 @@ Class MaliceSawedOff : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("weapons/sshoto");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
-		If(ammoload=="Malice12GaugeSlug"){
+		If(ammoload=="MA12GaugeSlug"){
 			shooter.A_StartSound("SlugShotgunner/Fire",CHAN_5);
 		}
 		Else{

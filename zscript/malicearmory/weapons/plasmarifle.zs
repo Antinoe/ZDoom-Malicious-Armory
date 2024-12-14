@@ -16,7 +16,7 @@ Class MalicePlasmaRifle : SinWeapon{
 		SinWeapon.AmmoCost 2;
 		SinWeapon.FireMode1 999,4;
 		SinWeapon.FireMode2 1,7;
-		SinWeapon.DefaultMagazine "MaliceCell";
+		SinWeapon.DefaultMagazine "MACell";
 		SinItem.AmountMultiplier 1.0;
 		SinItem.BigItem 1;
 		SinWeapon.DrySound "weapons/plasdry";
@@ -28,9 +28,9 @@ Class MalicePlasmaRifle : SinWeapon{
 	States{Spawn: PLAS A -1; Stop; PLAH A 0; PLBS A 0; PLBH A 0;}
 	Override void HandleSprite(int status){
 		string ico = "PL";
-		If(attachments.Find("MalicePlasmaRifleBarrel")!=attachments.Size()){ico=ico.."B";}
+		If(attachments.Find("PlasmaRifleBarrel")!=attachments.Size()){ico=ico.."B";}
 		Else{ico=ico.."A";}
-		If(attachments.Find("MalicePlasmaRifleHeatsink")!=attachments.Size()){ico=ico.."H";}
+		If(attachments.Find("PlasmaRifleHeatsink")!=attachments.Size()){ico=ico.."H";}
 		Else{ico=ico.."S";}
 		cursprite=GetSpriteIndex(ico);
 		If(MaxAmount>0){
@@ -55,12 +55,12 @@ Class MalicePlasmaRifle : SinWeapon{
 			coolmax=70;
 			proj="PM_HellifiedSoldierChargeBall";
 			noise=512;
-			//If(attachments.Find("MalicePlasmaRifleHeatsink")!=attachments.Size()){multishot=50;}
+			//If(attachments.Find("PlasmaRifleHeatsink")!=attachments.Size()){multishot=50;}
 			//Else{multishot=40;}
 		}Else{
 			AttackSound="";
 			guncharge=0;
-			If(attachments.Find("MalicePlasmaRifleHeatsink")!=attachments.Size()){ammocost=1;}
+			If(attachments.Find("PlasmaRifleHeatsink")!=attachments.Size()){ammocost=1;}
 			Else{ammocost=2;}
 			coolmax=0;
 			proj="PM_HellifiedSoldierBall";
@@ -71,14 +71,14 @@ Class MalicePlasmaRifle : SinWeapon{
 	}
 }
 //	WORK
-Class MaliceM2 : SinWeapon{
+Class M2 : SinWeapon{
 	Default{
 		Inventory.Icon "M2ZZA0";
 		Tag "M2";
 		Inventory.PickupMessage "Picked up an M2.";
-		SinItem.Description "The M2 Flamethrower is a portable, shoulder-fired weapon used during World War II, designed to project a stream of ignited fuel to clear enemy bunkers and trenches. It was highly effective at close range, creating intense fire and destruction, but limited by its weight and fuel capacity.";
+		SinItem.Description "A portable, shoulder-fired weapon used during World War II, designed to project a stream of ignited fuel to clear enemy bunkers and trenches. It was highly effective at close range, creating intense fire and destruction, but limited by its weight and fuel capacity.";
 		SinWeapon.AmmoType "Fuel";
-		SinWeapon.DefaultMagazine "MaliceGasolineTank";
+		SinWeapon.DefaultMagazine "M2Tank";
 		SinWeapon.FireType FIRE_AUTO;
 		SinWeapon.ReloadType RELOAD_MAG;
 		SinWeapon.Spread -0.5,-0.5;
@@ -115,4 +115,38 @@ Class MaliceM2 : SinWeapon{
 		Else{Return 1;}
 		Return Super.WeaponReFire(shooter,gun);
 	}
+}
+Class MANapalm : SinAmmo{
+	Default{
+		Inventory.Icon "MBULA0";
+		Tag "Napalm";
+		Inventory.Amount 150;
+		Inventory.MaxAmount 400;
+		Inventory.PickupMessage "Picked up some Napalm.";
+		SinItem.Description "A thick, gel-like incendiary substance designed to stick to surfaces while burning at extremely high temperatures. It is commonly used in military operations for its ability to create intense, prolonged fires and its effectiveness in denying terrain or neutralizing fortified positions.";
+		SinAmmo.AmmoType "Fuel";
+		SinAmmo.TypeName "NAPALM";
+		SinAmmo.AttackType ATTACK_PROJECTILE;
+		SinAmmo.Projectile "PM_CyberFodderFire";
+		SinAmmo.Spread 2,2;
+		SinAmmo.Noise 256;
+		SinAmmo.Recoil 0;
+		SinItem.Stackable 1;
+		SinItem.RemoveWhenEmpty 1;
+	}
+	States{Spawn: MBUL A -1; Stop;}
+}
+Class M2Tank : SinAmmoBox{
+	Default{
+		Inventory.Icon "CLIPA0";
+		Tag "M2 Tank";
+		Inventory.Amount 400;
+		Inventory.MaxAmount 400;
+		Inventory.PickupMessage "Picked up an M2 Tank.";
+		SinItem.Description "A portable fuel reservoir worn on the back, designed to supply the M2 Flamethrower with pressurized liquid fuel. Its dual-cylinder configuration ensures a steady fuel flow, enabling sustained use in clearing obstacles or neutralizing threats in close combat scenarios.";
+		SinAmmoBox.AmmoType "Fuel";
+		SinAmmoBox.LoadedAmmo "MANapalm";
+		SinAmmoBox.Magazine 1;
+	}
+	States{Spawn: CLIP A -1; Stop;}
 }

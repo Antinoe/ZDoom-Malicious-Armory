@@ -1,6 +1,6 @@
 
 /*
-Class MalicePlateCarrier : SinItem{
+Class MAPlateCarrier : SinItem{
 	Default{
 		Inventory.Icon "BVSTA0";
 		Inventory.Amount 1;
@@ -12,19 +12,19 @@ Class MalicePlateCarrier : SinItem{
 	States{Spawn: BVST A -1; Stop;}
 }
 */
-Class MaliceBallistic : SinArmor abstract{
-	enum MaliceBallisticLevel{
+Class MABallistic : SinArmor abstract{
+	enum MABallisticLevel{
 		LEVEL1 = 0, //	Stab protection; Knives, Axes.
 		LEVEL2 = 1, //	Low-Velocity Handgun protection; 9mm, .357 Magnum.
 		LEVEL3A = 2, //	High-Velocity Handgun protection; 12-Gauge Buckshot, 12-Gauge Birdshot, .44 Magnum.
 		LEVEL3 = 3, //	High-Velocity Rifle protection; .308cal, 5.56mm, 7.62mm.
 		LEVEL4 = 4, //	High-Velocity Armor-Piercing Rifle protection; .30cal Steel Core.
 	}
-	int ballisticlevel; property BallisticLevel : ballisticlevel; //Level of ballistic protection. Refer to MaliceBallisticLevel.
+	int ballisticlevel; property BallisticLevel : ballisticlevel; //Level of ballistic protection. Refer to MABallisticLevel.
 	Default{
 		SinItem.RemoveWhenEmpty 1;
 		SinArmor.Protection 50;
-		MaliceBallistic.BallisticLevel LEVEL1;
+		MABallistic.BallisticLevel LEVEL1;
 	}
 	Override void AbsorbDamage (int damage, Name damageType, out int newdamage, Actor inflictor, Actor source, int flags){
 		//	Level 1
@@ -56,7 +56,7 @@ Class MaliceBallistic : SinArmor abstract{
 
 //	Not too sure about these. Might overcomplicate things.
 /*
-Class MaliceBallisticPlateLevel2A : SinItem{
+Class MABallisticPlateLevel2A : SinItem{
 	Default{
 		Inventory.Icon "BPLTA0";
 		Inventory.Amount 1;
@@ -67,7 +67,7 @@ Class MaliceBallisticPlateLevel2A : SinItem{
 	}
 	States{Spawn: BPLT A -1; Stop;}
 }
-Class MaliceBallisticPlateLevel2 : SinItem{
+Class MABallisticPlateLevel2 : SinItem{
 	Default{
 		Inventory.Icon "BPLTA0";
 		Inventory.Amount 1;
@@ -78,7 +78,7 @@ Class MaliceBallisticPlateLevel2 : SinItem{
 	}
 	States{Spawn: BPLT A -1; Stop;}
 }
-Class MaliceBallisticPlateLevel3A : SinItem{
+Class MABallisticPlateLevel3A : SinItem{
 	Default{
 		Inventory.Icon "BPLTA0";
 		Inventory.Amount 1;
@@ -89,7 +89,7 @@ Class MaliceBallisticPlateLevel3A : SinItem{
 	}
 	States{Spawn: BPLT A -1; Stop;}
 }
-Class MaliceBallisticPlateLevel3 : SinItem{
+Class MABallisticPlateLevel3 : SinItem{
 	Default{
 		Inventory.Icon "BPLTA0";
 		Inventory.Amount 1;
@@ -100,7 +100,7 @@ Class MaliceBallisticPlateLevel3 : SinItem{
 	}
 	States{Spawn: BPLT A -1; Stop;}
 }
-Class MaliceBallisticPlateLevel4 : SinItem{
+Class MABallisticPlateLevel4 : SinItem{
 	Default{
 		Inventory.Icon "BPLTA0";
 		Inventory.Amount 1;
@@ -111,7 +111,7 @@ Class MaliceBallisticPlateLevel4 : SinItem{
 	}
 	States{Spawn: BPLT A -1; Stop;}
 }
-Class MaliceBallisticVestLevel1 : SinArmor{
+Class MABallisticVestLevel1 : SinArmor{
 	Default{
 		Inventory.Icon "BVSTA0";
 		Inventory.Amount 50;
