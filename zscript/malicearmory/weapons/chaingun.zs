@@ -30,6 +30,7 @@ Class M16 : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(1,5,0,100,0);
 		shooter.A_StartSound("ZombieRifleDistant",CHAN_7,CHANF_OVERLAP);
 		shooter.A_StartSound("ZombieSoldier/Rifle");
 	}
@@ -112,6 +113,7 @@ Class Maroszek : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(2,10,0,100,0);
 		shooter.A_StartSound("ZombieRifleDistant",CHAN_7,CHANF_OVERLAP);
 		shooter.A_StartSound("ZombieSoldier/Rifle");
 	}
@@ -177,6 +179,7 @@ Class M134 : SinWeapon{
 		Return Super.WeaponPreFire(shooter,gun);
 	}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(1,5,0,100,0);
 		shooter.A_StartSound("MutatedGunner/Fire",CHAN_5,CHANF_LOOPING);
 		shooter.A_StartSound("GunnerRifleDistant",CHAN_7,CHANF_OVERLAP);
 	}
@@ -218,6 +221,7 @@ Class HeavyCarbine : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(2,10,0,100,0);
 		shooter.A_StartSound("Carbine/Shot",CHAN_5,CHANF_OVERLAP);
 		shooter.A_StartSound("GunnerRifleDistant",CHAN_7,CHANF_OVERLAP);
 	}
@@ -266,6 +270,7 @@ Class MAAutocannon : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(3,5,0,100,0);
 		shooter.A_StartSound("Sybarite/Autocannon",11);
 		shooter.A_StartSound("GunnerRifleDistant",12,CHANF_OVERLAP);
 		shotsFired++;

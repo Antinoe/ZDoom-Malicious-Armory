@@ -28,6 +28,7 @@ Class RPG7 : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(2,10,0,100,0);
 		shooter.A_StartSound("Tyrant/ShellFire",CHANF_OVERLAP);
 		shooter.A_StartSound("Tyrant/ShellFireAdd",8,CHANF_OVERLAP);
 		shooter.A_StartSound("Tyrant/ShellFireAdd2",9,CHANF_OVERLAP);
@@ -56,8 +57,36 @@ Class RPG : SinAmmo{
 }
 Class RPGTracer : PM_TyrantTankShell{
 	Default{
-		DamageFunction(350);
+		DamageFunction(500);
 		DamageType "Explosive";
+	}
+	States{
+	Death:
+		TNT1 A 0
+		{
+			A_Explode(250,200);
+			Radius_Quake (5, 54, 0, 25, 0);
+		}
+		TNT1 A 0 A_StartSound("BigExplosionDistant", CHAN_7);
+		TNT1 A 0 A_StartSound("Tyrant/ShellExplode", CHAN_6);
+		TNT1 A 0 A_SpawnItemEx("OrangeShockwaveBig");
+		TNT1 A 0 A_SpawnItemEx("OrangeExplosionFlare");
+		TNT1 AAA 0 A_SpawnItemEx("PM_ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		TNT1 AAAAAAA 0 A_SpawnItemEx("PM_GenericExplosionFlames",0,0,0,random(-3,3),random(-3,3),random(-2,3),0,SXF_NOCHECKPOSITION);
+		TNT1 A 0 A_SpawnParticleEx("",TexMan.CheckForTexture("LEYSO0"),style: STYLE_Add,flags: SPF_RELATIVE|SPF_ROLL|SPF_FULLBRIGHT,lifetime: 4,size: 450,xoff: -10,velx: frandom(5,13),startalphaf: 1.0,fadestepf: -0.002,sizestep: frandom(0.0,3),startroll: random(-180,180));
+		TNT1 AAAA 0
+		{
+			A_SpawnParticleEx("",tex[3],style: STYLE_Add,flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,lifetime: 8,size: 360,zoff: 40,startalphaf: 1,startroll: random(-180,180));
+			A_SpawnParticleEx("",tex[4],style: STYLE_Add,flags: SPF_ROLL|SPF_RELATIVE|SPF_FULLBRIGHT,lifetime: 20,size: 800,zoff: 50, startalphaf: 1,fadestepf: -1,sizestep: -25,startroll: random(-180,180));
+			for(int i=random(15,35);i>0;i--)
+			{
+				A_SpawnParticleEx("727272",tex[5],style: STYLE_Normal,flags: SPF_RELATIVE|SPF_ROLL,lifetime: random(40,70),size: frandom(1,30),zoff: random(10,60),velx: frandom(-12,12),vely: frandom(-12,12),velz: frandom(-5,15),accelz: frandom(-0.1,-0.5),startalphaf: 1.0,fadestepf: 0,sizestep: -0.2,startroll: random(-180,180),rollvel: random(-4,4));
+				A_SpawnParticleEx("6C6C6C",tex[6],style: STYLE_Normal,flags: SPF_RELATIVE|SPF_ROLL,lifetime: random(30,60),size: frandom(10,220),zoff: random(10,60),velx: random(-9,9),vely: random(-9,9),velz: random(-9,9),startalphaf: frandom(0.2,0.75),fadestepf: -1,sizestep: 12,startroll: random(-180,180),rollvel: random(-2,2));
+			}
+		}
+		TNT1 AAA 0 A_SpawnItemEx("PM_ExplosionLongerSmokeBig",0,0,1,random(-8,8),random(-8,8),random(0,3),0,0,70);
+		TNT1 A 18 BRIGHT Light("TyrantMExp");
+		Stop;
 	}
 }
 Class M202 : SinWeapon{
@@ -89,6 +118,7 @@ Class M202 : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(2,10,0,100,0);
 		shooter.A_StartSound("Tyrant/ShellFire",CHANF_OVERLAP);
 		shooter.A_StartSound("Tyrant/ShellFireAdd",8,CHANF_OVERLAP);
 		shooter.A_StartSound("Tyrant/ShellFireAdd2",9,CHANF_OVERLAP);

@@ -25,6 +25,7 @@ Class G17 : SinWeapon{
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
 		shooter.A_StartSound("PistolZombie/FireDistant",CHAN_7,CHANF_OVERLAP);
 		shooter.A_StartSound("PistolZombie/Fire");
+		shooter.A_Quake(1,5,0,100,0);
 	}
 }
 Class G17Mag : SinAmmoBox{
@@ -81,6 +82,7 @@ Class MP5 : SinWeapon{
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
 		shooter.A_StartSound("PistolZombie/FireDistant",CHAN_7,CHANF_OVERLAP,volume:0.55);
 		shooter.A_StartSound("Pregnant/SMG",8,pitch:1.15);
+		shooter.A_Quake(1,5,0,100,0);
 	}
 }
 Class MP5Mag : SinAmmoBox{
@@ -141,5 +143,6 @@ Class M29 : SinWeapon{
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
 		shooter.A_StartSound("PistolZombie/FireDistant",CHAN_7,CHANF_OVERLAP);
 		shooter.A_StartSound("CivZombie/Shot",9,CHANF_OVERLAP);
+		shooter.A_Quake(1,5,0,100,0);
 	}
 }

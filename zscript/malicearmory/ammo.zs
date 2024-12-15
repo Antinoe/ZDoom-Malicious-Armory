@@ -29,7 +29,7 @@ Class MA9x19mm : SinAmmo{
 		If(cvar.GetCVar("ma_recoil").getbool()){self.recoil=5;}
 	}
 }
-Class MA9x19mmTracer : PM_PelletTracer{Default{DamageFunction 20; DamageType "Pistol";}}
+Class MA9x19mmTracer : PM_PelletTracer{Default{DamageFunction 20; DamageType "Pistol"; Speed 100;}}
 Class MA9x19mmPower : SinAmmo{
 	Default{
 		Inventory.Icon "PBUPA0";
@@ -57,7 +57,7 @@ Class MA9x19mmPower : SinAmmo{
 		frame=fram;
 	}
 }
-Class MA9x19mmPowerTracer : PM_PelletTracer{Default{DamageFunction 30; DamageType "Pistol";}}
+Class MA9x19mmPowerTracer : PM_PelletTracer{Default{DamageFunction 30; DamageType "Pistol"; Speed 100;}}
 //	WORK
 Class MA9x19mmToxic : SinAmmo{
 	Default{
@@ -128,7 +128,7 @@ Class MA12GaugeBuckshot : SinAmmo{
 		}
 	}
 }
-Class MA12GaugeBuckshotTracer : PM_PelletTracer{Default{DamageFunction 8; DamageType "Shotgun";}}
+Class MA12GaugeBuckshotTracer : PM_PelletTracer{Default{DamageFunction 8; DamageType "Shotgun"; Speed 100;}}
 Class MA12GaugeBirdshot : SinAmmo{
 	Default{
 		Inventory.Icon "SHEMA0";
@@ -159,7 +159,7 @@ Class MA12GaugeBirdshot : SinAmmo{
 		}
 	}
 }
-Class MA12GaugeBirdshotTracer : PM_PelletTracer{Default{DamageFunction 4; DamageType "Minigun";}}
+Class MA12GaugeBirdshotTracer : PM_PelletTracer{Default{DamageFunction 4; DamageType "Minigun"; Speed 100;}}
 Class MA12GaugeSlug : SinAmmo{
 	Default{
 		Inventory.Icon "SHENA0";
@@ -189,7 +189,7 @@ Class MA12GaugeSlug : SinAmmo{
 		}
 	}
 }
-Class MA12GaugeSlugTracer : PM_SlugBullet{Default{DamageFunction 80; DamageType "Shotgun";}}
+Class MA12GaugeSlugTracer : PM_SlugBullet{Default{DamageFunction 80; DamageType "Shotgun"; Speed 100;}}
 Class MA12GaugeBox : SinAmmoBox{
 	Default{
 		Inventory.Icon "SBOXA0";
@@ -260,7 +260,7 @@ Class MA556x45mm : SinAmmo{
 		frame=fram;
 	}
 }
-Class MA556x45mmTracer : PM_BulletTracer{Default{DamageFunction 40; DamageType "Rifle";}}
+Class MA556x45mmTracer : PM_BulletTracer{Default{DamageFunction 40; DamageType "Rifle"; Speed 100;}}
 Class MA556x45mmBox : SinAmmoBox{
 	Default{
 		Inventory.Icon "AMMOA0";

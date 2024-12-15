@@ -28,6 +28,7 @@ Class M79 : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("PM/HeavyRifleOpen");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(2,10,0,100,0);
 		shooter.A_StartSound("Sybarite/Thump",13);
 	}
 }

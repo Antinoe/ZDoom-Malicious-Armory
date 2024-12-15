@@ -21,5 +21,8 @@ Class M67 : SinWeapon{
 	}
 	States{Spawn: ZGRN A -1; Stop;}
 	Override void HandleSprite(int status){cursprite=spawnstate.sprite;}
+	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(1,5,0,100,0);
+	}
 }
 Class GrenadeThrown : PM_ZTrooperFragGrenade{Default{Speed 1;}}

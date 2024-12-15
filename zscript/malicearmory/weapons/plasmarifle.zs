@@ -69,6 +69,9 @@ Class MalicePlasmaRifle : SinWeapon{
 		}
 		HandleSprite();
 	}
+	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(2,10,0,100,0);
+	}
 }
 //	WORK
 Class M2 : SinWeapon{
@@ -104,6 +107,7 @@ Class M2 : SinWeapon{
 		Return Super.WeaponPreFire(shooter,gun);
 	}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(1,5,0,100,0);
 		//shooter.A_StartSound("CyberFodder/Flamer",CHAN_5,1,1);
 		shooter.A_StartSound("CyberFodder/Flamer",CHAN_5,CHANF_LOOPING);
 	}
@@ -118,7 +122,7 @@ Class M2 : SinWeapon{
 }
 Class MANapalm : SinAmmo{
 	Default{
-		Inventory.Icon "MBULA0";
+		Inventory.Icon "RKITA0";
 		Tag "Napalm";
 		Inventory.Amount 150;
 		Inventory.MaxAmount 400;
@@ -127,18 +131,19 @@ Class MANapalm : SinAmmo{
 		SinAmmo.AmmoType "Fuel";
 		SinAmmo.TypeName "NAPALM";
 		SinAmmo.AttackType ATTACK_PROJECTILE;
-		SinAmmo.Projectile "PM_CyberFodderFire";
+		SinAmmo.Projectile "NapalmProjectile";
 		SinAmmo.Spread 2,2;
 		SinAmmo.Noise 256;
 		SinAmmo.Recoil 0;
 		SinItem.Stackable 1;
 		SinItem.RemoveWhenEmpty 1;
 	}
-	States{Spawn: MBUL A -1; Stop;}
+	States{Spawn: RKIT A -1; Stop;}
 }
+Class NapalmProjectile : PM_CyberFodderFire{Default{DamageFunction 10;}}
 Class M2Tank : SinAmmoBox{
 	Default{
-		Inventory.Icon "CLIPA0";
+		Inventory.Icon "RKITA0";
 		Tag "M2 Tank";
 		Inventory.Amount 400;
 		Inventory.MaxAmount 400;
@@ -148,5 +153,5 @@ Class M2Tank : SinAmmoBox{
 		SinAmmoBox.LoadedAmmo "MANapalm";
 		SinAmmoBox.Magazine 1;
 	}
-	States{Spawn: CLIP A -1; Stop;}
+	States{Spawn: RKIT A -1; Stop;}
 }

@@ -24,6 +24,7 @@ Class M21 : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("weapons/sshoto");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(2,10,0,100,0);
 		If(ammoload=="MA12GaugeSlug"){
 			shooter.A_StartSound("SlugShotgunner/Fire",CHAN_5);
 		}
@@ -59,6 +60,7 @@ Class MASawedOff : SinWeapon{
 	Override void OnEquip(SinPlayer user, SinHands gun){user.A_StartSound("weapons/sshoto");}
 	Override void OnUnequip(SinPlayer user, SinHands gun){}
 	Override void WeaponFire(SinPlayer shooter, SinHands gun){
+		shooter.A_Quake(2,10,0,100,0);
 		If(ammoload=="MA12GaugeSlug"){
 			shooter.A_StartSound("SlugShotgunner/Fire",CHAN_5);
 		}
