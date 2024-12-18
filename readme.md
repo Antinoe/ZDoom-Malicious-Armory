@@ -1,3 +1,6 @@
+# DISCONTINUED. PLEASE USE CONTINUUM INSTEAD.
+https://github.com/Antinoe/ZDoom-Continuum
+
 # Malicious Armory
 
 This is a weapon pack for Blue Savior's Project Malice, using Dwelling Sin as a base resource. I should note that this is not in a polished state yet.
